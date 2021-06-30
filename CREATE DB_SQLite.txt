@@ -8,7 +8,6 @@ CREATE TABLE Project (
 
 CREATE TABLE WorkType (
 	WorkType_ID INTEGER PRIMARY KEY AUTOINCREMENT,
-	Project_ID INTEGER NOT NULL REFERENCES Project(Project_ID),
 	WorkType_Name NVARCHAR(100) NOT NULL,
 	WorkType_Description NVARCHAR(1000) NULL
 );
@@ -22,15 +21,7 @@ CREATE TABLE TimesheetRecord (
 	WorkDescription NVARCHAR(1000) NOT NULL,
 	Documents NVARCHAR(2500) NOT NULL,
 	Duration TIME NOT NULL,
-	WorkPrice MONEY NULL,
-	PRIMARY KEY (Project_ID, WorkType_ID, StartDateTime, EndDateTime)
-);
-
-CREATE TABLE ProjectWorkTypePrice (
-	Project_ID INTEGER REFERENCES Project(Project_ID),
-	WorkType_ID INTEGER REFERENCES WorkType(WorkType_ID),
-	StartDateTime DATETIME NOT NULL,
-	EndDateTime DATETIME NOT NULL,
 	HourPrice MONEY NULL,
+	WorkPrice MONEY NULL,
 	PRIMARY KEY (Project_ID, WorkType_ID, StartDateTime, EndDateTime)
 );
