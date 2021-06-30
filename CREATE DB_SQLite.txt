@@ -12,7 +12,7 @@ CREATE TABLE WorkType (
 	WorkType_Description NVARCHAR(1000) NULL
 );
 
-CREATE TABLE TimesheetRecord (
+CREATE TABLE Work (
 	Project_ID INTEGER REFERENCES Project(Project_ID),
 	WorkType_ID INTEGER REFERENCES WorkType(WorkType_ID),
 	StartDateTime DATETIME NOT NULL,
